@@ -1,85 +1,20 @@
+<!-- ... el mismo HEAD que ya tienes ... -->
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>¡Feliz Mes, Mi Amor!</title>
-  <link href="css2" rel="stylesheet">
-  <link rel="stylesheet" href="all.min.css">
-  <link rel="stylesheet" href="hombre.css">
-  <link rel="icon" type="image/x-icon" href="https://dedicapag.rf.gd/favicon.ico?v=1">
-  <style>
-    #tsparticles {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      z-index: -10;
-    }
-  </style>
-</head>
 <body>
   <div id="tsparticles"></div>
 
-  <audio id="backgroundMusic" preload="auto">
-    <button id="audioTrigger" style="display:none;" onclick="document.getElementById('backgroundMusic').play()">Play</button>
+  <audio id="backgroundMusic" preload="auto" loop>
     <source src="https://dedicapag.rf.gd/musica.mp3" type="audio/mpeg">
     Tu navegador no soporta el elemento de audio.
   </audio>
 
-  <div class="parallax-bg"></div>
-  <div class="overlay"></div>
-  <div class="heart-glow"></div>
+  <button id="play-music-btn"
+    onclick="document.getElementById('backgroundMusic').play(); this.style.display='none';"
+    style="display:none; position: fixed; top: 20px; right: 20px; z-index: 999; padding: 10px 15px; font-size: 16px; border-radius: 8px; background: #ff5e5e; color: white; border: none; cursor: pointer;">
+    🔊 Activar música
+  </button>
 
-  <div class="title">
-    <h1>¡Feliz Mes, Mi Amor!</h1>
-  </div>
-
-  <div class="container" id="login-section">
-    <div class="main-content">
-      <div class="image-container">
-        <img src="6837a7a10d93a_images (58).jpeg" alt="Cover Image" class="cover-image">
-      </div>
-      <div class="password-section">
-        <p class="password-hint">Ingresa la contraseña</p>
-        <p class="hint">Pista: Un día muy especial para nosotros</p>
-        <div class="password-display" id="password-display"></div>
-        <div class="error" id="error" style="display: none;">Contraseña incorrecta, intenta de nuevo.</div>
-        <div class="keyboard" role="region" aria-label="Teclado numérico">
-          <button class="key" onclick="addDigit('1')">1</button>
-          <button class="key" onclick="addDigit('2')">2</button>
-          <button class="key" onclick="addDigit('3')">3</button>
-          <button class="key" onclick="addDigit('4')">4</button>
-          <button class="key" onclick="addDigit('5')">5</button>
-          <button class="key" onclick="addDigit('6')">6</button>
-          <button class="key" onclick="addDigit('7')">7</button>
-          <button class="key" onclick="addDigit('8')">8</button>
-          <button class="key" onclick="addDigit('9')">9</button>
-          <button class="key delete-key" onclick="deleteDigit()">⌫</button>
-          <button class="key" onclick="addDigit('0')">0</button>
-          <button class="key" onclick="addDigit('*')">#</button>
-          <button class="key enter-key" onclick="checkPassword()">Entrar</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="container" id="content-section" style="display: none;">
-    <div class="main-content">
-      <div class="image-container">
-        <img src="6837a7a10d93a_images (58).jpeg" alt="Imagen especial" class="cover-image">
-      </div>
-      <div class="password-section">
-        <h2 class="password-hint">Para Mi Amor</h2>
-        <p class="hint" style="font-size: 1.1em; text-align: center; max-width: 600px;">
-          Mi vida, este día especial es para celebrar el amor que compartimos. Esta sorpresa es para ti, porque eres mi mundo.
-        </p>
-        <p class="hint" style="font-size: 1em; font-style: italic; margin-top: 15px;">
-          "Tú eres mi hogar, mi refugio, mi amor por siempre."
-        </p>
-      </div>
-    </div>
-  </div>
+  <!-- ... tu código de login-section y content-section igual ... -->
 
   <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
   <script>
@@ -101,7 +36,6 @@
 
     let password = '';
     const passwordDisplay = document.getElementById('password-display');
-    const music = document.getElementById('backgroundMusic');
 
     function addDigit(digit) {
       password += digit;
@@ -123,8 +57,7 @@
       if (password === '3003') {
         document.getElementById('login-section').style.display = 'none';
         document.getElementById('content-section').style.display = 'block';
-        music.play();
-        music.play();
+        document.getElementById('play-music-btn').style.display = 'inline-block';
       } else {
         error.style.display = 'block';
         password = '';
@@ -145,3 +78,4 @@
   </script>
 </body>
 </html>
+
