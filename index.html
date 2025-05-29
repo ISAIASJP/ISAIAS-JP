@@ -1,7 +1,9 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>¡Feliz Mes, Mi Amor!</title>
   <link href="css2" rel="stylesheet">
   <link rel="stylesheet" href="all.min.css">
@@ -19,16 +21,10 @@
 <body>
   <div id="tsparticles"></div>
 
-  <audio id="backgroundMusic" preload="auto" loop>
+  <audio id="backgroundMusic" preload="auto">
     <source src="https://dedicapag.rf.gd/musica.mp3" type="audio/mpeg">
     Tu navegador no soporta el elemento de audio.
   </audio>
-
-  <button id="play-music-btn"
-    onclick="document.getElementById('backgroundMusic').play(); this.style.display='none';"
-    style="display:none; position: fixed; top: 20px; right: 20px; z-index: 999; padding: 10px 15px; font-size: 16px; border-radius: 8px; background: #ff5e5e; color: white; border: none; cursor: pointer;">
-    🔊 Activar música
-  </button>
 
   <div class="parallax-bg"></div>
   <div class="overlay"></div>
@@ -104,6 +100,7 @@
 
     let password = '';
     const passwordDisplay = document.getElementById('password-display');
+    const music = document.getElementById('backgroundMusic');
 
     function addDigit(digit) {
       password += digit;
@@ -125,12 +122,7 @@
       if (password === '3003') {
         document.getElementById('login-section').style.display = 'none';
         document.getElementById('content-section').style.display = 'block';
-
-        const audio = document.getElementById('backgroundMusic');
-        audio.play().catch(() => {
-          document.getElementById('play-music-btn').style.display = 'inline-block';
-        });
-
+        music.play();
       } else {
         error.style.display = 'block';
         password = '';
@@ -151,6 +143,7 @@
   </script>
 </body>
 </html>
+
 
 
 
